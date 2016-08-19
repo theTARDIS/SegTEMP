@@ -10,7 +10,7 @@ public class Principal {
 		// TODO Auto-generated method stub
 		
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-		System.loadLibrary("opencv_ffmpeg2413_64");
+		System.loadLibrary("opencv_ffmpeg2413");
 		String dir = "E:\\";
 	    String file = "E:\\video.mp4";
 	    VideoCapture vc = new VideoCapture();
@@ -26,11 +26,11 @@ public class Principal {
 		
 		
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME );
-		  System.loadLibrary("opencv_ffmpeg_64");
+		  System.loadLibrary("opencv_ffmpeg");
 	      Mat mat = Mat.eye( 3, 3, CvType.CV_8UC1 );
 	      System.out.println("mat = " + mat.dump() );
 	      Analizador aux = new Analizador();
-	      aux.CargarVideo("E:/video.mp4");
+	      aux.CargarVideo("C:\\Users\\Jorge\\workspace\\prueba\\dis.mp4");
 	    
 	    
 	}
