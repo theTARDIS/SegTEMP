@@ -19,7 +19,7 @@ public class HSV {
 	}
 	
 	public Mat convertirBGR2HSV(String direccion){
-		System.loadLibrary( Core.NATIVE_LIBRARY_NAME );
+		
 	    //File input = new File("Desert.jpg");
 		File input = new File(direccion);
 	    BufferedImage image = new BufferedImage(0,0,0) ;
