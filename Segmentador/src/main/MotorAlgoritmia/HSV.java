@@ -1,4 +1,4 @@
-package MotorAlgoritmia;
+package main.MotorAlgoritmia;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;

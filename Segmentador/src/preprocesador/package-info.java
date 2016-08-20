@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * @author German
- *
- */
-package preprocesador;

@@ -1,5 +1,4 @@
-package preprocesador;
-
+package main.Preprocesador;
 import java.util.LinkedList;
 
 import org.opencv.core.Mat;
