@@ -22,7 +22,6 @@ public class HSV {
 	//Salida: Matriz con ColorMode HSV
 	public Mat convertirBGR2HSV(String direccion){
 		
-	    //File input = new File("Desert.jpg");
 		File input = new File(direccion);
 	    BufferedImage image = new BufferedImage(0,0,0) ;
 	    
@@ -41,7 +40,6 @@ public class HSV {
 	    mat.put(0, 0, data);
 
 	    Mat mat1 = new Mat(image.getHeight(),image.getWidth(),CvType.CV_8UC1);
-	    //esto!!
 	    Imgproc.cvtColor(mat, mat1, Imgproc.COLOR_BGR2HSV);
 	    
 	    return mat1;

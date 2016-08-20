@@ -12,7 +12,7 @@ public class Histograma {
 				
 	}
 	
-	//Entrada: matriz HSV colormode
+	//Entrada: matriz HSV colormode normalizada
 	//Salida: matriz con el histograma
 	public Mat calcular(Mat mat1){
 		// añade matriz a la lista
