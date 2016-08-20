@@ -78,7 +78,9 @@ public class Analizador {
 		            g2.drawImage(img, 0, 0, null);
 		            g2.dispose();
 		            try {
-						ImageIO.write(bi, "jpg", new File("img"+String.valueOf(contador) +".jpg"));
+		            	File theDir = new File("output");
+		            	theDir.mkdir();
+						ImageIO.write(bi, "jpg", new File("output/img"+String.valueOf(contador) +".jpg"));
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
