@@ -18,6 +18,8 @@ public class HSV {
 		
 	}
 	
+	//Entrada: String con la direccion de la imagen
+	//Salida: Matriz con ColorMode HSV
 	public Mat convertirBGR2HSV(String direccion){
 		
 	    //File input = new File("Desert.jpg");

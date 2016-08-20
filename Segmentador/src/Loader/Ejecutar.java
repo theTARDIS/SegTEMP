@@ -7,7 +7,7 @@ public class Ejecutar {
 		
 		CargarLibrerias();
 		Analizador aux = new Analizador();
-		aux.CargarVideo("E:\\video.mp4");
+		aux.CargarVideo("C:\\Users\\Jorge\\workspace\\prueba\\dis.mp4");
 	}
 	/*
 	 * Detecta la plataforma de ejecución y carga las librerias correspondientes
