@@ -1,4 +1,4 @@
-package preprocesador;
+package main.Preprocesador;
 
 import java.awt.FlowLayout;
 import java.awt.Graphics2D;

@@ -1,6 +1,6 @@
-package Loader;
+package main.Loader;
 
-import preprocesador.Analizador;
+import main.Preprocesador.*;
 
 public class Ejecutar {
 	public static void main(String[] args) {
@@ -35,6 +35,10 @@ public class Ejecutar {
 			System.out.println(ex.getMessage().toString());
 		}
 
+	}
+	public static int suma(int a,int b){
+		
+		return a+b;
 	}
 
 }

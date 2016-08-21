@@ -1,4 +1,4 @@
-package MotorAlgoritmia;
+package main.MotorAlgoritmia;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
@@ -19,7 +19,7 @@ public class HSV {
 	}
 	
 	//Entrada: String con la direccion de la imagen
-	//Salida: Matriz en ColorMode HSV
+	//Salida: Matriz con ColorMode HSV
 	public Mat convertirBGR2HSV(String direccion){
 		
 		File input = new File(direccion);
@@ -34,13 +34,11 @@ public class HSV {
 			Mat nulo = new Mat();
 			return nulo;
 		}	
-		
-		// Envia informacion de la imagen a la matriz
+
 	    byte[] data = ((DataBufferByte) image.getRaster().getDataBuffer()).getData();
 	    Mat mat = new Mat(image.getHeight(), image.getWidth(), CvType.CV_8UC3);
 	    mat.put(0, 0, data);
-	    
-	    // Se crea la matriz donde se almacenara el resultado de la conversion
+
 	    Mat mat1 = new Mat(image.getHeight(),image.getWidth(),CvType.CV_8UC1);
 	    Imgproc.cvtColor(mat, mat1, Imgproc.COLOR_BGR2HSV);
 	    
