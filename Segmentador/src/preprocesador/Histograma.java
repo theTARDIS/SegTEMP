@@ -18,6 +18,7 @@ public class Histograma {
 		// añade matriz a la lista
 		java.util.List<Mat> matList = new LinkedList<Mat>();
         matList.add(mat1);
+        // Se crean las estructuras necesarias para la generacion del histograma
         Mat histogram = new Mat();
         MatOfFloat ranges=new MatOfFloat(0,256);
         //Imgproc.cal
