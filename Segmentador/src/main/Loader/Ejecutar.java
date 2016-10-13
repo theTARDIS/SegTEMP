@@ -36,9 +36,4 @@ public class Ejecutar {
 		}
 
 	}
-	public static int suma(int a,int b){
-		
-		return a+b;
-	}
-
 }
