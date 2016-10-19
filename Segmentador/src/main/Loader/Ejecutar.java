@@ -12,7 +12,7 @@ public class Ejecutar {
 		//	Endpoint.publish("http://localhost:8080/WS/HelloWorld",new Servicio()); ACTIVAR WEB SERVICE
 		CargarLibrerias();
 		Analizador aux = new Analizador();
-		aux.cargarvideo("e:\\video.mp4");
+		aux.segmentador("e:\\video.mp4");
 	}
 	/*
 	 * Detecta la plataforma de ejecucin y carga las ´
