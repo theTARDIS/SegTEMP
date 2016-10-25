@@ -75,33 +75,40 @@ public class Analizador {
 
 			HSV a = new HSV();
 			Mat salida =
-			a.convertirBGR2HSV("", mat2BufferedImage(frame));
+			a.convertirBGR2HSV(frame);
 			List<Mat> canales = new ArrayList<Mat>();
 			Core.split(salida, canales);
 			salida = canales.get(0);
-			System.out.println(salida.dump());
-			Core.normalize(salida, salida, 0, tamano,
-					Core.NORM_MINMAX, -1, new Mat());
+			
+			Core.normalize(salida, salida, 0, 179,
+					Core.NORM_MINMAX, -1);
+	
+			
 			Mat h1 = calcularHistograma(salida);
-			System.out.println(h1.dump());
-			System.out.println("--NORMALIZADO--");
-			h1 = normalizar(h1);
-			System.out.println(h1.dump());
-			for (int j = 0; j < h1.rows(); j++) {
-				double[] salidax = h1.get(j, 0);
-				suma = suma + salidax[0];
+			//System.out.println(h1.dump());
 
-			}
-			System.out.print(suma);
+			h1 = normalizar(h1);
+		//	 System.out.println("--NORMALIZADO--");
+		//	System.out.println(h1.dump());
 			cola.add(h1);
 			if (cola.size() == 2) {
+			    
 				Mat m1 = cola.remove(0);
 				Mat m2 = cola.get(0);
 				ArrayList<Double> hist1 = mat2List(m1);
 				ArrayList<Double> hist2 = mat2List(m2);
-				varaciones.add(distancia(m1, m2));
+				
+				//double distHue = distancia(hist1,hist2);
+				
+				
+			//	double distValue = distancia(hist1,hist2);
+				
+				varaciones.add(distancia(hist1,hist2));
 			}
+			
+		
 		}
+	
 		double media = promedio(varaciones);
 		double ac = 0.0;
 		for (int index = 0; index < varaciones.size(); index++) {
@@ -110,13 +117,14 @@ public class Analizador {
 		double desvest = Math.sqrt(ac / varaciones.size());
 		ArrayList<Integer> cortes = new ArrayList<Integer>();
 		ArrayList<Integer> noCortes = new ArrayList<Integer>();
-		System.out.println(desvest + media);
+		double ejex = desvest + media;
+		System.out.println(ejex);
 		for (int m = 0; m < varaciones.size(); m++) {
 			if (varaciones.get(m) >= desvest + media) {
-				cortes.add(m);
+				cortes.add(m+1);
 			}
 			else {
-				noCortes.add(m);
+				noCortes.add(m+1);
 			}
 		}
 		System.out.println(varaciones);
@@ -133,12 +141,39 @@ public class Analizador {
 	 */
 	public double promedio(ArrayList<Double> histograma) {
 		double prom = 0.0;
-		int i;
-		for (i = 0; i < histograma.size(); i++) {
+		for (int i = 0; i < histograma.size(); i++) {
 			prom = prom + histograma.get(i);
 		}
 		return prom / histograma.size();
 	}
+	
+	
+	
+	 /**
+     * Esta función recibe el histograma.
+     * y retorna el valor medio de dicho histograma.
+     * @author: German Vives.
+     * @version: 1.0
+     * @param histograma
+     * @return valor medio
+     */
+    public double valorMedio(ArrayList<Double> histograma) {
+        
+        double min = 0.0;
+        double max = 0.0;
+        for (int i = 0; i < histograma.size(); i++) {
+            if (histograma.get(i) >= max){
+                max = histograma.get(i) ;
+            }
+            if (histograma.get(i) <= min){
+                min = histograma.get(i) ;
+            }
+        }
+               
+        return ((min+max)/2);
+    }
+	
+	
 	/**
 	 * Esta función recibe la matriz del histograma.
 	 * y retorna la conversion del mismo a ArrayList
@@ -185,8 +220,8 @@ public class Analizador {
 		for (i = 0; i < histograma2.size(); i++) {
 			score += Math.sqrt(histograma1.get(i) * histograma2.get(i));
 		}
-		score = Math.sqrt(1 - (1 / Math.sqrt(promedio1 * promedio2 * histograma1.size() * histograma2.size())) * score);
-		return score;
+		score = Math.sqrt(1 - (1 / (Math.sqrt(promedio1 * promedio2 * histograma1.size() * histograma2.size()))) * score);
+		return (score);
 	}
     
 	/**
@@ -201,10 +236,13 @@ public class Analizador {
 	public final Mat calcularHistograma(final Mat mat1) {
 		java.util.List<Mat> matList = new LinkedList<Mat>();
 		Mat histogram = new Mat();
-		MatOfInt histSize = new MatOfInt(256);
-		MatOfFloat histRange = new MatOfFloat(0, 255 + 1); // Componentes de 256
 		matList.add(mat1);
-		Imgproc.calcHist(matList, new MatOfInt(0), new Mat(), histogram, histSize, histRange);
+		MatOfInt histSize = new MatOfInt(179);
+		MatOfFloat histRange = new MatOfFloat(0, 179); // Componentes de 256
+		matList.add(mat1);
+		Imgproc.calcHist(matList, new MatOfInt(0), new Mat(),histogram ,histSize, histRange);
+	   //calcHist(List<Mat> images, MatOfInt channels, Mat mask, Mat hist, MatOfInt histSize, MatOfFloat ranges)
+		
 		return histogram;
 	}
 

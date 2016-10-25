@@ -22,41 +22,39 @@ public class HSV {
 	//Entrada: String con la direccion de la imagen
 	//Salida: Matriz con ColorMode HSV
 	public Mat convertirBGR2HSV(String direccion,BufferedImage imagen){
-		
 		BufferedImage image = null;
-		
 		try {
-			 
-			if (direccion!=""){
+			if (direccion != "") {
 				File input = new File(direccion);
-			 
 			    image = ImageIO.read(input);
-				}
-				else{
-					image = imagen;
-				}
-			
-			
+			} else {
+			    image = imagen;
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("Error abriendo la imagen");
 			Mat nulo = new Mat();
 			return nulo;
-		}	
+		}
 
-	    byte[] data = ((DataBufferByte) image.getRaster().getDataBuffer()).getData();
-	    Mat mat = new Mat(image.getHeight(), image.getWidth(), CvType.CV_8UC3);
+	    byte[] data = ((DataBufferByte) image.getRaster()
+	            .getDataBuffer()).getData();
+	    Mat mat = new Mat(image.getHeight(),
+	            image.getWidth(), CvType.CV_8UC3);
 	    mat.put(0, 0, data);
 
-	    Mat mat1 = new Mat(image.getHeight(),image.getWidth(),CvType.CV_8UC3);
+	    Mat mat1 = new Mat(image.getHeight(),
+	            image.getWidth(), CvType.CV_8UC3);
 	    Imgproc.cvtColor(mat, mat1, Imgproc.COLOR_BGR2HSV);
 	  //  RGBtoHSB(0,0,0);
 	    return mat1;
-		
 	}
 	
-	
-	
+	public Mat convertirBGR2HSV(Mat matriz){
+
+	    Imgproc.cvtColor(matriz, matriz, Imgproc.COLOR_BGR2HSV);
+	    return matriz;
+	}
 
 }
